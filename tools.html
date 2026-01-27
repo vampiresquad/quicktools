@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>All Free Online Tools | QuickTools</title>
+  <meta name="description" content="Explore all free online tools by QuickTools. Word Counter, Case Converter, Character Counter, Password Generator, QR Code Generator and more.">
+  <meta name="keywords" content="free online tools, text tools, web tools, quicktools">
+  <meta name="author" content="QuickTools">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --radius: 14px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 26px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-top: 6px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: 0.2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .tool-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .tool-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .tool-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>All Tools</h1>
+  <p>Explore all free online tools by QuickTools</p>
+</header>
+
+<main class="container">
+
+  <h2 class="section-title">Text Tools</h2>
+
+  <div class="tools-grid">
+    <a href="tools/word-counter.html" class="tool-card">
+      <div class="tool-icon">📝</div>
+      <h3>Word Counter</h3>
+      <p>Count words, characters & more instantly.</p>
+    </a>
+
+    <a href="tools/character-counter.html" class="tool-card">
+      <div class="tool-icon">🔢</div>
+      <h3>Character Counter</h3>
+      <p>Count characters with or without spaces.</p>
+    </a>
+
+    <a href="tools/case-converter.html" class="tool-card">
+      <div class="tool-icon">🔤</div>
+      <h3>Case Converter</h3>
+      <p>Convert text to upper, lower or title case.</p>
+    </a>
+
+    <a href="tools/text-repeater.html" class="tool-card">
+      <div class="tool-icon">🔁</div>
+      <h3>Text Repeater</h3>
+      <p>Repeat text multiple times easily.</p>
+    </a>
+  </div>
+
+  <h2 class="section-title" style="margin-top:28px;">Utility Tools</h2>
+
+  <div class="tools-grid">
+    <a href="tools/password-generator.html" class="tool-card">
+      <div class="tool-icon">🔐</div>
+      <h3>Password Generator</h3>
+      <p>Create strong & secure passwords.</p>
+    </a>
+
+    <a href="tools/qr-code-generator.html" class="tool-card">
+      <div class="tool-icon">📱</div>
+      <h3>QR Code Generator</h3>
+      <p>Generate QR codes for text or links.</p>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 <a href="index.html">QuickTools</a> • Free Online Tools
+</footer>
+
+</body>
+</html>
