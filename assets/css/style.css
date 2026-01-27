@@ -1,0 +1,143 @@
+:root {
+  --primary: #2563eb;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --radius: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ===== Header ===== */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 6px;
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ===== Card ===== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  margin-bottom: 18px;
+}
+
+/* ===== Grid ===== */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+/* ===== Tool Card ===== */
+.tool-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+}
+
+.tool-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.tool-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tool-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ===== Inputs ===== */
+textarea,
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  border-color: var(--primary);
+}
+
+/* ===== Buttons ===== */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+}
