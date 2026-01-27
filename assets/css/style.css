@@ -141,3 +141,13 @@ footer a {
   color: var(--primary);
   text-decoration: none;
 }
+nav a {
+  color: #e0e7ff;
+  font-size: 0.85rem;
+  margin: 0 6px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
