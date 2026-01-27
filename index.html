@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>QuickTools – Free Online Tools for Text & Web</title>
+  <meta name="description" content="QuickTools offers free online tools like Word Counter, Case Converter, Password Generator, QR Code Generator and more. Fast, simple & mobile-friendly.">
+  <meta name="keywords" content="free online tools, word counter, text tools, web tools, password generator">
+  <meta name="author" content="QuickTools">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2563eb; /* Blue */
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --radius: 14px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 28px 18px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      margin: 20px 0 12px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .tool-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .tool-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .tool-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>QuickTools</h1>
+  <p>Free Online Tools for Text, Web & Productivity</p>
+</header>
+
+<main class="container">
+
+  <h2 class="section-title">Popular Tools</h2>
+
+  <div class="tools-grid">
+
+    <a href="tools/word-counter.html" class="tool-card">
+      <div class="tool-icon">📝</div>
+      <h3>Word Counter</h3>
+      <p>Count words & characters instantly.</p>
+    </a>
+
+    <a href="tools/character-counter.html" class="tool-card">
+      <div class="tool-icon">🔢</div>
+      <h3>Character Counter</h3>
+      <p>Check text length accurately.</p>
+    </a>
+
+    <a href="tools/case-converter.html" class="tool-card">
+      <div class="tool-icon">🔤</div>
+      <h3>Case Converter</h3>
+      <p>Uppercase, lowercase & title case.</p>
+    </a>
+
+    <a href="tools/password-generator.html" class="tool-card">
+      <div class="tool-icon">🔐</div>
+      <h3>Password Generator</h3>
+      <p>Create strong secure passwords.</p>
+    </a>
+
+    <a href="tools/qr-code-generator.html" class="tool-card">
+      <div class="tool-icon">📱</div>
+      <h3>QR Code Generator</h3>
+      <p>Generate QR codes instantly.</p>
+    </a>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 QuickTools • Built with ❤️ using GitHub Pages  
+</footer>
+
+</body>
+</html>
