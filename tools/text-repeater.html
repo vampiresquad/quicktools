@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Text Repeater – Repeat Text Multiple Times | QuickTools</title>
+  <meta name="description" content="Free Text Repeater by QuickTools. Repeat text multiple times with or without line breaks instantly. Fast & mobile-friendly.">
+  <meta name="keywords" content="text repeater, repeat text online, text duplicator, repeat words tool">
+  <meta name="author" content="QuickTools">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --radius: 14px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-top: 6px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: var(--primary);
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .output {
+      margin-top: 12px;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .seo-content h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .seo-content p {
+      font-size: 0.9rem;
+      color: #334155;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Text Repeater</h1>
+  <p>Repeat text instantly with one click</p>
+</header>
+
+<main class="container">
+
+  <!-- Tool -->
+  <div class="card">
+
+    <textarea id="textInput" placeholder="Enter text you want to repeat..."></textarea>
+
+    <input type="number" id="repeatCount" min="1" max="1000" value="5">
+
+    <div class="row">
+      <input type="checkbox" id="newLine" checked>
+      <label for="newLine">Add new line after each repeat</label>
+    </div>
+
+    <button onclick="repeatText()">Repeat Text</button>
+
+    <div class="output" id="output"></div>
+
+  </div>
+
+  <!-- SEO Content -->
+  <div class="card seo-content">
+    <h2>About This Text Repeater</h2>
+    <p>
+      QuickTools Text Repeater allows you to repeat any text multiple times instantly.
+      It is useful for social media posts, testing, coding placeholders, and messaging.
+    </p>
+    <p>
+      This tool is free, fast, and works directly in your browser without any signup.
+      Fully optimized for mobile and desktop users.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 <a href="../index.html">QuickTools</a> • Free Online Tools
+</footer>
+
+<script>
+  function repeatText() {
+    const text = document.getElementById("textInput").value;
+    const count = parseInt(document.getElementById("repeatCount").value);
+    const newLine = document.getElementById("newLine").checked;
+    const output = document.getElementById("output");
+
+    if (!text || count < 1) {
+      output.textContent = "Please enter text and a valid number.";
+      return;
+    }
+
+    let result = "";
+    for (let i = 0; i < count; i++) {
+      result += text;
+      if (newLine && i !== count - 1) result += "\n";
+    }
+
+    output.textContent = result;
+  }
+</script>
+
+</body>
+</html>
