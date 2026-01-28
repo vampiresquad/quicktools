@@ -97,6 +97,10 @@
       opacity: 0.9;
     }
 
+    .download-btn {
+      background: #0f172a;
+    }
+
     .qr-output {
       margin-top: 16px;
       text-align: center;
@@ -177,6 +181,8 @@
 </footer>
 
 <script>
+  let currentQRUrl = "";
+
   function generateQR() {
     const data = document.getElementById("data").value.trim();
     const result = document.getElementById("qrResult");
@@ -186,13 +192,37 @@
       return;
     }
 
-    const qrURL = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(data);
+    currentQRUrl =
+      "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
+      encodeURIComponent(data);
 
     result.innerHTML = `
-      <img src="${qrURL}" alt="QR Code">
-      <br>
-      <a href="${qrURL}" download="qrcode.png">Download QR Code</a>
+      <img src="${currentQRUrl}" alt="QR Code">
+      <button class="download-btn" id="downloadBtn" onclick="downloadQR()">Download QR Code</button>
     `;
+  }
+
+  function downloadQR() {
+    if (!currentQRUrl) return;
+
+    fetch(currentQRUrl)
+      .then(res => res.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "qrcode.png";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        const btn = document.getElementById("downloadBtn");
+        btn.textContent = "Downloaded ✔";
+        setTimeout(() => {
+          btn.textContent = "Download QR Code";
+        }, 2000);
+      });
   }
 </script>
 
