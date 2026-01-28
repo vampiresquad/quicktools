@@ -369,6 +369,7 @@ button:active {
 footer {
   color: #cbd5f5;
 }
+
 /* =====================================================
    🫀 LIFE INJECTION – MAKE UI FEEL ALIVE
    Subtle • Hacker-style • Non-cringe
@@ -438,6 +439,7 @@ body::before {
     opacity: 0.6;
   }
 }
+
 /* =====================================================
    🧬 LIFE + DETAIL INJECTION (FINAL POLISH)
    Purpose: Remove empty feeling, increase satisfaction
@@ -522,6 +524,7 @@ main {
     display: none;
   }
 }
+
 /* =====================================================
    🧘 UX BALANCE PATCH – LESS NOISE, MORE LIFE
    Purpose: Reduce demo-feel, increase real-product feel
@@ -580,4 +583,41 @@ footer {
   .tool-card {
     animation: none;
   }
+}
+
+/* =====================================================
+   🆕 UPDATE: SCROLLBAR & SELECTION (NEW)
+   Adds premium polished feel to the dark theme
+===================================================== */
+
+/* 🖱️ Custom Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617; /* Matches body dark bg */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155; /* Slate grey handle */
+  border-radius: 5px;
+  border: 2px solid #020617; /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary); /* Glows blue on hover */
+}
+
+/* For Firefox Support */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 #020617;
+}
+
+/* 🖊️ Premium Text Selection */
+::selection {
+  background: rgba(37, 99, 235, 0.3); /* Transparent primary blue */
+  color: #fff;
+  text-shadow: 0 0 10px var(--primary); /* Neon glow effect */
 }
