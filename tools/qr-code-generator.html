@@ -4,227 +4,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>QR Code Generator – Create QR Codes Online | QuickTools</title>
-  <meta name="description" content="Free QR Code Generator by QuickTools. Create QR codes for URLs, text, WiFi and more instantly. Fast, secure & mobile-friendly.">
-  <meta name="keywords" content="qr code generator, create qr code online, free qr code generator">
+  <title>QR Code Generator – Free & Instant | QuickTools</title>
+  <meta name="description" content="Generate high-quality QR Codes for URLs, Text, WiFi, and more. Download instantly in PNG format using QuickTools.">
+  <meta name="keywords" content="qr code generator, free qr code, create qr code, url to qr">
   <meta name="author" content="QuickTools">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="../assets/icons/favicon.png">
+
   <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --radius: 14px;
+    .input-group {
+      margin-bottom: 20px;
+    }
+    
+    .qr-wrapper {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+      border: 1px dashed var(--muted);
+      transition: all 0.3s ease;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--primary);
-      color: #fff;
-      padding: 22px 16px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      margin-top: 6px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 18px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      margin-bottom: 18px;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #e2e8f0;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-      outline: none;
-    }
-
-    input:focus, select:focus {
+    .qr-wrapper.active {
+      background: #fff;
+      border-style: solid;
       border-color: var(--primary);
     }
 
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 6px;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .download-btn {
-      background: #0f172a;
-    }
-
-    .qr-output {
-      margin-top: 16px;
-      text-align: center;
-    }
-
-    .qr-output img {
+    .qr-image {
       max-width: 200px;
-      margin-bottom: 10px;
+      width: 100%;
+      height: auto;
+      display: none; /* Hidden by default */
+      margin-bottom: 15px;
     }
 
-    .seo-content h2 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+    .loading-spinner {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-left-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
 
-    .seo-content p {
-      font-size: 0.9rem;
-      color: #334155;
-      margin-bottom: 10px;
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
-    footer {
-      text-align: center;
-      padding: 18px;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
+    .action-row {
+      display: none; /* Hidden until QR generated */
+      width: 100%;
+      gap: 10px;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>QR Code Generator</h1>
-  <p>Create QR codes instantly for text or links</p>
-</header>
+  <header>
+    <h1><a href="../index.html">QuickTools</a></h1>
+    <p>QR Code Generator</p>
+    
+    <nav>
+      <a href="../index.html">Home</a> |
+      <a href="../tools.html">All Tools</a> |
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
 
-<main class="container">
+  <main class="container">
 
-  <!-- Tool -->
-  <div class="card">
+    <div class="card">
+      <h2 class="section-title">Create QR Code</h2>
+      
+      <div class="input-group">
+        <label style="display:block; margin-bottom:8px; color:var(--muted);">Enter URL or Text:</label>
+        <input type="text" id="qrInput" placeholder="https://example.com" spellcheck="false">
+      </div>
 
-    <label>QR Content Type</label>
-    <select id="type">
-      <option value="text">Text / URL</option>
-    </select>
+      <button onclick="generateQR()">🚀 Generate QR Code</button>
 
-    <input type="text" id="data" placeholder="Enter text or URL here...">
+      <div class="qr-wrapper" id="qrWrapper">
+        <div class="loading-spinner" id="loader"></div>
+        <img src="" alt="QR Code" class="qr-image" id="qrImage">
+        <p id="placeholderText" style="color: var(--muted); font-size: 0.9rem;">QR Code will appear here</p>
+      
+        <div class="action-row" id="actionRow">
+          <button onclick="downloadQR()" style="background: #0f172a;">Download PNG ⬇</button>
+        </div>
+      </div>
 
-    <button onclick="generateQR()">Generate QR Code</button>
+    </div>
 
-    <div class="qr-output" id="qrResult"></div>
+    <div class="card trust-block">
+      <h3>How it works?</h3>
+      <p>
+        Enter any website link, text, or message above. We instantly convert it into a scannable QR code using a secure API. 
+        You can download the image and use it for business cards, flyers, or digital sharing.
+      </p>
+    </div>
 
-  </div>
+  </main>
 
-  <!-- SEO Content -->
-  <div class="card seo-content">
-    <h2>About This QR Code Generator</h2>
-    <p>
-      QuickTools QR Code Generator allows you to generate QR codes instantly for URLs or text.
-      This tool is useful for business cards, websites, marketing materials, and mobile sharing.
-    </p>
-    <p>
-      No data is stored or shared. Everything runs directly in your browser and works perfectly
-      on mobile devices.
-    </p>
-  </div>
+  <footer>
+    © <span class="current-year"></span> QuickTools | 
+    <a href="../contact.html">Contact</a> | 
+    <a href="../privacy-policy.html">Privacy</a>
+  </footer>
 
-</main>
+  <script src="../assets/js/main.js"></script>
 
-<footer>
-  © 2026 <a href="../index.html">QuickTools</a> • Free Online Tools
-</footer>
+  <script>
+    let currentQRUrl = "";
+    const qrInput = document.getElementById("qrInput");
+    const qrImage = document.getElementById("qrImage");
+    const wrapper = document.getElementById("qrWrapper");
+    const loader = document.getElementById("loader");
+    const placeholder = document.getElementById("placeholderText");
+    const actionRow = document.getElementById("actionRow");
 
-<script>
-  let currentQRUrl = "";
+    function generateQR() {
+      const data = qrInput.value.trim();
+      
+      if (!data) {
+        showToast("Please enter text or URL first!");
+        qrInput.focus();
+        return;
+      }
 
-  function generateQR() {
-    const data = document.getElementById("data").value.trim();
-    const result = document.getElementById("qrResult");
+      // UI States
+      placeholder.style.display = "none";
+      qrImage.style.display = "none";
+      actionRow.style.display = "none";
+      wrapper.classList.remove("active");
+      loader.style.display = "block";
 
-    if (!data) {
-      result.innerHTML = "<p style='color:red;'>Please enter some text or URL.</p>";
-      return;
+      // API URL
+      const size = "300x300";
+      currentQRUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}&data=${encodeURIComponent(data)}`;
+
+      // Preload Image
+      const img = new Image();
+      img.src = currentQRUrl;
+      
+      img.onload = () => {
+        loader.style.display = "none";
+        qrImage.src = currentQRUrl;
+        qrImage.style.display = "block";
+        wrapper.classList.add("active"); // White background for scanning contrast
+        actionRow.style.display = "flex";
+        showToast("QR Code Generated!");
+      };
+
+      img.onerror = () => {
+        loader.style.display = "none";
+        placeholder.style.display = "block";
+        placeholder.textContent = "Error loading QR Code.";
+      };
     }
 
-    currentQRUrl =
-      "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
-      encodeURIComponent(data);
+    function downloadQR() {
+      if (!currentQRUrl) return;
 
-    result.innerHTML = `
-      <img src="${currentQRUrl}" alt="QR Code">
-      <button class="download-btn" id="downloadBtn" onclick="downloadQR()">Download QR Code</button>
-    `;
-  }
+      const btn = document.querySelector("#actionRow button");
+      const originalText = btn.textContent;
+      btn.textContent = "Downloading...";
+      
+      fetch(currentQRUrl)
+        .then(res => res.blob())
+        .then(blob => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "quicktools-qr.png";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
 
-  function downloadQR() {
-    if (!currentQRUrl) return;
+          btn.textContent = "Downloaded ✔";
+          setTimeout(() => btn.textContent = originalText, 2000);
+        })
+        .catch(() => {
+          showToast("Download failed. Try right-click > Save Image.");
+          btn.textContent = originalText;
+        });
+    }
 
-    fetch(currentQRUrl)
-      .then(res => res.blob())
-      .then(blob => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "qrcode.png";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-
-        const btn = document.getElementById("downloadBtn");
-        btn.textContent = "Downloaded ✔";
-        setTimeout(() => {
-          btn.textContent = "Download QR Code";
-        }, 2000);
-      });
-  }
-</script>
+    // Generate on Enter key
+    qrInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") generateQR();
+    });
+  </script>
 
 </body>
 </html>
