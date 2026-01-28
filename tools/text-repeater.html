@@ -4,220 +4,162 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Text Repeater – Repeat Text Multiple Times | QuickTools</title>
-  <meta name="description" content="Free Text Repeater by QuickTools. Repeat text multiple times with or without line breaks instantly. Fast & mobile-friendly.">
-  <meta name="keywords" content="text repeater, repeat text online, text duplicator, repeat words tool">
+  <title>Text Repeater – Repeat Text Online | QuickTools</title>
+  <meta name="description" content="Free online Text Repeater. Repeat words, emojis, or sentences multiple times instantly. Copy and share on WhatsApp, Telegram, etc.">
+  <meta name="keywords" content="text repeater, spam text generator, repeat text for whatsapp, online text multiplier">
   <meta name="author" content="QuickTools">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="../assets/icons/favicon.png">
+
   <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --radius: 14px;
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 15px 0;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--primary);
-      color: #fff;
-      padding: 22px 16px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      margin-top: 6px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 18px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      margin-bottom: 18px;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 120px;
-      resize: vertical;
+    
+    .output-area {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
       padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #e2e8f0;
-      font-size: 0.95rem;
-      outline: none;
-    }
-
-    textarea:focus {
-      border-color: var(--primary);
-    }
-
-    input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #e2e8f0;
+      min-height: 100px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-family: monospace;
       font-size: 0.9rem;
-      margin-top: 10px;
+      color: var(--muted);
+      margin-top: 15px;
+      white-space: pre-wrap; /* Keeps line breaks */
     }
-
-    .row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
+    
+    label {
       font-size: 0.85rem;
       color: var(--muted);
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 12px;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .output {
-      margin-top: 12px;
-      background: #f1f5f9;
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 0.9rem;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-
-    .seo-content h2 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .seo-content p {
-      font-size: 0.9rem;
-      color: #334155;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 18px;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
+      margin-bottom: 5px;
+      display: block;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Text Repeater</h1>
-  <p>Repeat text instantly with one click</p>
-</header>
+  <header>
+    <h1><a href="../index.html">QuickTools</a></h1>
+    <p>Text & Emoji Repeater</p>
+    
+    <nav>
+      <a href="../index.html">Home</a> |
+      <a href="../tools.html">All Tools</a> |
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
 
-<main class="container">
+  <main class="container">
 
-  <!-- Tool -->
-  <div class="card">
+    <div class="card">
+      <h2 class="section-title">Text Repeater</h2>
+      
+      <textarea id="textInput" placeholder="Enter text or emoji to repeat..." spellcheck="false"></textarea>
 
-    <textarea id="textInput" placeholder="Enter text you want to repeat..."></textarea>
+      <div class="settings-grid">
+        <div>
+          <label>Repetitions:</label>
+          <input type="number" id="repeatCount" min="1" max="5000" value="10">
+        </div>
+        <div>
+          <label>Separator:</label>
+          <select id="separator">
+            <option value="\n">New Line</option>
+            <option value=" ">Space</option>
+            <option value=", ">Comma</option>
+            <option value=". ">Period</option>
+            <option value="">None</option>
+          </select>
+        </div>
+      </div>
 
-    <input type="number" id="repeatCount" min="1" max="1000" value="5">
+      <button onclick="repeatText()">Repeat Text 🚀</button>
 
-    <div class="row">
-      <input type="checkbox" id="newLine" checked>
-      <label for="newLine">Add new line after each repeat</label>
+      <div id="output" class="output-area" style="display:none;"></div>
+
+      <div id="actionButtons" style="display: none; gap: 10px; margin-top: 15px;">
+        <button onclick="copyOutput()">Copy Result</button>
+        <button onclick="clearAll()" style="background: var(--muted);">Clear</button>
+      </div>
     </div>
 
-    <button onclick="repeatText()">Repeat Text</button>
+    <div class="card trust-block">
+      <h3>About Text Repeater</h3>
+      <p>
+        Want to send a message 100 times? Or create a long pattern of emojis? 
+        This tool lets you repeat any text up to 5000 times instantly. 
+        You can choose to separate them with a new line, space, or comma.
+      </p>
+    </div>
 
-    <div class="output" id="output"></div>
+  </main>
 
-  </div>
+  <footer>
+    © <span class="current-year"></span> QuickTools | 
+    <a href="../contact.html">Contact</a> | 
+    <a href="../privacy-policy.html">Privacy</a>
+  </footer>
 
-  <!-- SEO Content -->
-  <div class="card seo-content">
-    <h2>About This Text Repeater</h2>
-    <p>
-      QuickTools Text Repeater allows you to repeat any text multiple times instantly.
-      It is useful for social media posts, testing, coding placeholders, and messaging.
-    </p>
-    <p>
-      This tool is free, fast, and works directly in your browser without any signup.
-      Fully optimized for mobile and desktop users.
-    </p>
-  </div>
+  <script src="../assets/js/main.js"></script>
 
-</main>
+  <script>
+    function repeatText() {
+      const text = document.getElementById("textInput").value;
+      const count = parseInt(document.getElementById("repeatCount").value);
+      const separatorValue = document.getElementById("separator").value;
+      const outputDiv = document.getElementById("output");
+      const actionButtons = document.getElementById("actionButtons");
 
-<footer>
-  © 2026 <a href="../index.html">QuickTools</a> • Free Online Tools
-</footer>
+      // Validate
+      if (!text) {
+        showToast("Please enter some text first!");
+        return;
+      }
+      if (count > 5000) {
+        showToast("Max limit is 5000 repeats.");
+        return;
+      }
 
-<script>
-  function repeatText() {
-    const text = document.getElementById("textInput").value;
-    const count = parseInt(document.getElementById("repeatCount").value);
-    const newLine = document.getElementById("newLine").checked;
-    const output = document.getElementById("output");
+      // Logic
+      // Handle escaped newline character from select value
+      let separator = separatorValue === "\\n" ? "\n" : separatorValue;
 
-    if (!text || count < 1) {
-      output.textContent = "Please enter text and a valid number.";
-      return;
+      let result = "";
+      // Create array and join (more efficient than loop for simple strings)
+      result = Array(count).fill(text).join(separator);
+
+      // Show Result
+      outputDiv.textContent = result;
+      outputDiv.style.display = "block";
+      actionButtons.style.display = "flex";
+      
+      showToast("Text generated successfully!");
     }
 
-    let result = "";
-    for (let i = 0; i < count; i++) {
-      result += text;
-      if (newLine && i !== count - 1) result += "\n";
+    function copyOutput() {
+      const outputText = document.getElementById("output").textContent;
+      if (!outputText) return;
+      copyToClipboard(outputText);
     }
 
-    output.textContent = result;
-  }
-</script>
+    function clearAll() {
+      document.getElementById("textInput").value = "";
+      document.getElementById("output").textContent = "";
+      document.getElementById("output").style.display = "none";
+      document.getElementById("actionButtons").style.display = "none";
+      showToast("Cleared");
+    }
+  </script>
 
 </body>
 </html>
