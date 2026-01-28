@@ -234,6 +234,7 @@ textarea:focus {
   outline: 2px solid rgba(37,99,235,0.4);
   outline-offset: 2px;
 }
+
 /* ===== Contact Page ===== */
 .contact-form {
   display: grid;
@@ -253,4 +254,48 @@ textarea:focus {
 
 .social-icons a:hover {
   opacity: 0.8;
+}
+
+/* =====================================================
+   🔥 NEW ENHANCEMENTS (ADDED – SAFE & NON-BREAKING)
+   Mobile + Desktop Polish
+===================================================== */
+
+/* Equal height cards for cleaner grids */
+.tool-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Icon alignment consistency */
+.tool-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* Better mobile header spacing */
+@media (max-width: 600px) {
+  header {
+    padding: 22px 14px;
+  }
+
+  .container {
+    padding: 16px;
+  }
+}
+
+/* Desktop grid breathing space */
+@media (min-width: 1024px) {
+  .tools-grid {
+    gap: 18px;
+  }
+}
+
+/* Smoother hover on large screens only */
+@media (hover: hover) {
+  .tool-card:hover {
+    transform: translateY(-6px);
+  }
 }
