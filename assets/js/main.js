@@ -5,16 +5,56 @@
 ===================================== */
 
 /* ===============================
-   DOM READY
+   DOM READY & INITIALIZATION
 =============================== */
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* Auto update footer year */
+  /* 1. Auto update footer year */
   const yearElements = document.querySelectorAll(".current-year");
   const currentYear = new Date().getFullYear();
   yearElements.forEach(el => el.textContent = currentYear);
 
+  /* 2. Highlight Active Menu Item (New) */
+  highlightActiveMenuItem();
+
+  /* 3. Secure External Links (New) */
+  secureExternalLinks();
 });
+
+/* ===============================
+   HELPER: Highlight Active Menu
+   (Shows user which page they are on)
+=============================== */
+function highlightActiveMenuItem() {
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll("nav a");
+
+  navLinks.forEach(link => {
+    const linkHref = link.getAttribute("href");
+    
+    // Match exact path or root path
+    if ((currentPath.includes(linkHref) && linkHref !== "/") || 
+        (currentPath === "/" && linkHref === "index.html") ||
+        (currentPath.endsWith("/") && linkHref === "index.html")) {
+      
+      link.style.color = "#38bdf8"; // Cyber Blue
+      link.style.fontWeight = "600";
+      link.style.textDecoration = "underline";
+      link.style.textUnderlineOffset = "4px";
+    }
+  });
+}
+
+/* ===============================
+   HELPER: Secure External Links
+   (Prevents tabnabbing attacks)
+=============================== */
+function secureExternalLinks() {
+  const links = document.querySelectorAll('a[target="_blank"]');
+  links.forEach(link => {
+    link.setAttribute("rel", "noopener noreferrer");
+  });
+}
 
 /* ===============================
    COPY TO CLIPBOARD
@@ -43,8 +83,8 @@ function isEmpty(value) {
 }
 
 /* ===============================
-   TOAST NOTIFICATION (UX IMPROVEMENT)
-   Non-intrusive feedback instead of alert
+   TOAST NOTIFICATION (UX IMPROVED)
+   Updated style to match Cyber/Dark Theme
 =============================== */
 function showToast(message) {
   let toast = document.getElementById("qt-toast");
@@ -52,28 +92,40 @@ function showToast(message) {
   if (!toast) {
     toast = document.createElement("div");
     toast.id = "qt-toast";
+    
+    // Styles
     toast.style.position = "fixed";
-    toast.style.bottom = "20px";
+    toast.style.bottom = "30px";
     toast.style.left = "50%";
     toast.style.transform = "translateX(-50%)";
-    toast.style.background = "#0f172a";
+    
+    // Glassmorphism Look
+    toast.style.background = "rgba(15, 23, 42, 0.9)"; // Dark semi-transparent
+    toast.style.backdropFilter = "blur(8px)";
+    toast.style.border = "1px solid rgba(56, 189, 248, 0.3)"; // Blue glow border
     toast.style.color = "#fff";
-    toast.style.padding = "10px 16px";
-    toast.style.borderRadius = "8px";
-    toast.style.fontSize = "0.85rem";
+    toast.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.3)";
+    
+    toast.style.padding = "12px 24px";
+    toast.style.borderRadius = "12px";
+    toast.style.fontSize = "0.9rem";
+    toast.style.fontWeight = "500";
     toast.style.zIndex = "9999";
     toast.style.opacity = "0";
-    toast.style.transition = "opacity 0.3s ease";
-
+    toast.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+    
     document.body.appendChild(toast);
   }
 
   toast.textContent = message;
   toast.style.opacity = "1";
+  toast.style.transform = "translateX(-50%) translateY(0)";
 
+  // Auto hide
   setTimeout(() => {
     toast.style.opacity = "0";
-  }, 2000);
+    toast.style.transform = "translateX(-50%) translateY(10px)";
+  }, 2500);
 }
 
 /* ===============================
@@ -90,19 +142,8 @@ document.addEventListener("click", (e) => {
   }
 });
 
-/* ===============================
-   FUTURE EXTENSIONS (PLANNED)
-=============================== */
-/*
-  - Dark / Light Theme Switcher
-  - Google Analytics / GA4
-  - AdSense lazy-load logic
-  - Shared header/footer injection
-  - Appilix mobile hooks
-*/
-
 /* =====================================================
-   ✅ UI / UX ENHANCEMENTS (APPENDED ONLY)
+   ✅ UI / UX ENHANCEMENTS
    Safe, optional, non-breaking
 ===================================================== */
 
@@ -125,10 +166,12 @@ function setButtonLoading(button, isLoading, text = "Processing…") {
     button.textContent = text;
     button.disabled = true;
     button.style.opacity = "0.85";
+    button.style.cursor = "wait";
   } else {
     button.textContent = button.dataset.originalText || button.textContent;
     button.disabled = false;
     button.style.opacity = "1";
+    button.style.cursor = "pointer";
   }
 }
 
