@@ -257,45 +257,31 @@ textarea:focus {
 }
 
 /* =====================================================
-   🔥 NEW ENHANCEMENTS (ADDED – SAFE & NON-BREAKING)
-   Mobile + Desktop Polish
+   ✅ FINAL MOBILE + LAYOUT FIXES (ADDED ONLY)
+   No existing code modified
 ===================================================== */
 
-/* Equal height cards for cleaner grids */
-.tool-card {
-  height: 100%;
+/* 🔹 Fix mobile grid issue (2 columns on phones) */
+@media (max-width: 640px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 🔹 Extra-small devices safety */
+@media (max-width: 360px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 🔹 Prevent huge blank white area & keep footer bottom */
+body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
-/* Icon alignment consistency */
-.tool-icon {
-  font-size: 2rem;
-  line-height: 1;
-}
-
-/* Better mobile header spacing */
-@media (max-width: 600px) {
-  header {
-    padding: 22px 14px;
-  }
-
-  .container {
-    padding: 16px;
-  }
-}
-
-/* Desktop grid breathing space */
-@media (min-width: 1024px) {
-  .tools-grid {
-    gap: 18px;
-  }
-}
-
-/* Smoother hover on large screens only */
-@media (hover: hover) {
-  .tool-card:hover {
-    transform: translateY(-6px);
-  }
+main {
+  flex: 1;
 }
