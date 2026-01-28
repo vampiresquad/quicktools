@@ -522,3 +522,62 @@ main {
     display: none;
   }
 }
+/* =====================================================
+   🧘 UX BALANCE PATCH – LESS NOISE, MORE LIFE
+   Purpose: Reduce demo-feel, increase real-product feel
+===================================================== */
+
+/* 1️⃣ Reduce constant motion fatigue */
+.tool-card {
+  animation-play-state: paused;
+}
+
+.tool-card:hover {
+  animation-play-state: running;
+}
+
+/* 2️⃣ Calm background breathing (less distraction) */
+body::before {
+  opacity: 0.35;
+  animation-duration: 28s;
+}
+
+/* 3️⃣ Stronger section separation (content feels fuller) */
+.card {
+  margin-bottom: 28px;
+}
+
+/* 4️⃣ Section intro micro-copy style (if present) */
+.section-intro {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  margin: 6px 0 18px;
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+/* 5️⃣ Tool card feels more actionable */
+.tool-card {
+  cursor: pointer;
+}
+
+.tool-card:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* 6️⃣ Footer top separation – page feels complete */
+footer {
+  margin-top: 60px;
+  border-top: 1px solid rgba(148,163,184,0.15);
+}
+
+/* 7️⃣ Kill animation overload for low-power devices */
+@media (max-width: 480px) {
+  body::before {
+    animation: none;
+  }
+
+  .tool-card {
+    animation: none;
+  }
+}
