@@ -100,3 +100,44 @@ document.addEventListener("click", (e) => {
   - Shared header/footer injection
   - Appilix mobile hooks
 */
+
+/* =====================================================
+   ✅ UI / UX ENHANCEMENTS (APPENDED ONLY)
+   Safe, optional, non-breaking
+===================================================== */
+
+/* Respect reduced motion preference */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Enhanced toast animation safety */
+(function enhanceToastMotion() {
+  if (prefersReducedMotion) {
+    const toast = document.getElementById("qt-toast");
+    if (toast) toast.style.transition = "none";
+  }
+})();
+
+/* Button loading state helper */
+function setButtonLoading(button, isLoading, text = "Processing…") {
+  if (!button) return;
+  if (isLoading) {
+    button.dataset.originalText = button.textContent;
+    button.textContent = text;
+    button.disabled = true;
+    button.style.opacity = "0.85";
+  } else {
+    button.textContent = button.dataset.originalText || button.textContent;
+    button.disabled = false;
+    button.style.opacity = "1";
+  }
+}
+
+/* Keyboard focus visibility helper */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Tab") {
+    document.body.classList.add("keyboard-navigation");
+  }
+});
+
+/* Remove 300ms tap delay feeling on mobile */
+document.addEventListener("touchstart", () => {}, { passive: true });
